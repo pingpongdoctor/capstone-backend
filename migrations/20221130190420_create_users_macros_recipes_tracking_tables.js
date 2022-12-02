@@ -13,8 +13,8 @@ exports.up = function (knex) {
         table.string("password").notNullable();
         table.string("gender").notNullable();
         table.integer("age").notNullable();
-        table.decimal("weight").notNullable();
-        table.decimal("height").notNullable();
+        table.integer("weight").notNullable();
+        table.integer("height").notNullable();
         table.timestamp("updated_at").defaultTo(knex.fn.now());
       })
       //MACROS TABLE
@@ -32,18 +32,17 @@ exports.up = function (knex) {
         table.decimal("bmi").notNullable();
         table.integer("bmr").notNullable();
         table.decimal("targeted_weight").notNullable();
-        table.integer("calories_need").notNullable();
-        table.decimal("pro").notNullable();
-        table.decimal("carb").notNullable();
-        table.decimal("fat").notNullable();
+        table.string("activity").notNullable();
+        table.integer("tdee").notNullable();
+        table.integer("tdee_need").notNullable();
         table.timestamp("updated_at").defaultTo(knex.fn.now());
       })
       //RECIPES TABLE
       .createTable("recipes", (table) => {
         table.increments("id").primary();
+        //USER ID IS OPTIONAL
         table
           .integer("users_id")
-          .notNullable()
           .unsigned()
           .references("id")
           .inTable("users")
@@ -51,17 +50,40 @@ exports.up = function (knex) {
           .onDelete("CASCADE");
         table.string("recipe_name").notNullable();
         table.string("image").notNullable();
-        table.string("ingredients").notNullable();
+        table.integer("ready_minute").notNullable();
         table.string("description").notNullable();
         table.string("step_1").notNullable();
         table.string("step_2").notNullable();
-        table.string("step_3").notNullable();
-        table.string("step_4").notNullable().defaultTo("");
-        table.string("step_5").notNullable().defaultTo("");
-        table.string("step_6").notNullable().defaultTo("");
-        table.string("step_7").notNullable().defaultTo("");
-        table.integer("likes").notNullable().defaultTo("");
+        table.string("step_3");
+        table.string("step_4");
+        table.string("step_5");
+        table.integer("likes").notNullable();
         table.table.timestamp("updated_at").defaultTo(knex.fn.now());
+      })
+      //INGREDIENTS TABLE
+      .createTable("ingredients", (table) => {
+        table.increments("id").primary();
+        table.string("ingredient").notNullable();
+      })
+      //MID TABLE OF INGREDIENT AND RECIPE TABLES
+      .createTable("recipes_ingredients", (table) => {
+        table.increments("id").primary();
+        table
+          .integer("recipes_id")
+          .notNullable()
+          .unsigned()
+          .references("id")
+          .inTable("recipes")
+          .onUpdate("CASCADE")
+          .onDelete("CASCADE");
+        table
+          .integer("ingredients_id")
+          .notNullable()
+          .unsigned()
+          .references("id")
+          .inTable("ingredients")
+          .onUpdate("CASCADE")
+          .onDelete("CASCADE");
       })
       //RECIPE COMMENTS TABLE
       .createTable("recipes_comments", (table) => {
@@ -70,6 +92,14 @@ exports.up = function (knex) {
         table.string("");
         table
           .integer("recipes_id")
+          .notNullable()
+          .unsigned()
+          .references("id")
+          .inTable("recipes")
+          .onUpdate("CASCADE")
+          .onDelete("CASCADE");
+        table
+          .integer("users_id")
           .notNullable()
           .unsigned()
           .references("id")

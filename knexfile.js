@@ -9,7 +9,7 @@ module.exports = {
   connection: {
     host: "127.0.0.1",
     database: "capstone",
-    user: user,
+    user,
     password,
   },
 };
