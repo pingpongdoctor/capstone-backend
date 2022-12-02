@@ -29,9 +29,9 @@ exports.up = function (knex) {
           .onUpdate("CASCADE")
           .onDelete("CASCADE");
         table.string("macro_name").notNullable();
-        table.decimal("bmi").notNullable();
+        table.integer("bmi").notNullable();
         table.integer("bmr").notNullable();
-        table.decimal("targeted_weight").notNullable();
+        table.integer("targeted_weight").notNullable();
         table.string("activity").notNullable();
         table.integer("tdee").notNullable();
         table.integer("tdee_need").notNullable();
@@ -58,14 +58,15 @@ exports.up = function (knex) {
         table.string("step_4");
         table.string("step_5");
         table.integer("likes").notNullable();
-        table.table.timestamp("updated_at").defaultTo(knex.fn.now());
+        table.timestamp("updated_at").defaultTo(knex.fn.now());
       })
       //INGREDIENTS TABLE
       .createTable("ingredients", (table) => {
         table.increments("id").primary();
         table.string("ingredient").notNullable();
+        table.timestamp("updated_at").defaultTo(knex.fn.now());
       })
-      //MID TABLE OF INGREDIENT AND RECIPE TABLES
+      //RECIPES AND INGREDIENTS TABLE
       .createTable("recipes_ingredients", (table) => {
         table.increments("id").primary();
         table
@@ -84,12 +85,12 @@ exports.up = function (knex) {
           .inTable("ingredients")
           .onUpdate("CASCADE")
           .onDelete("CASCADE");
+        table.timestamp("updated_at").defaultTo(knex.fn.now());
       })
       //RECIPE COMMENTS TABLE
       .createTable("recipes_comments", (table) => {
         table.increments("id").primary();
         table.string("comment").notNullable();
-        table.string("");
         table
           .integer("recipes_id")
           .notNullable()
@@ -106,6 +107,7 @@ exports.up = function (knex) {
           .inTable("recipes")
           .onUpdate("CASCADE")
           .onDelete("CASCADE");
+        table.timestamp("updated_at").defaultTo(knex.fn.now());
       })
   );
 };
@@ -114,4 +116,12 @@ exports.up = function (knex) {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.down = function (knex) {};
+exports.down = function (knex) {
+  return knex.schema
+    .dropTable("recipes_comments")
+    .dropTable("recipes_ingredients")
+    .dropTable("ingredients")
+    .dropTable("recipes")
+    .dropTable("macros")
+    .dropTable("users");
+};

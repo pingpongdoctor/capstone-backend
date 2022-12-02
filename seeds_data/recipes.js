@@ -3,7 +3,7 @@ module.exports = [
     id: 1,
     recipe_name: "Berry Banana Breakfast Smoothie 1",
     image: "https://spoonacular.com/recipeImages/715497-312x231.jpg",
-    ready_time: 5,
+    ready_minute: 5,
     description:
       "If you have around 5 minutes to spend in the kitchen, Berry Banana Breakfast Smoothie might be a tremendous lacto ovo vegetarian recipe to try.",
     step_1:
@@ -28,7 +28,7 @@ module.exports = [
     users_id: 2,
     recipe_name: "My recipe",
     image: "https://spoonacular.com/recipeImages/715497-312x231.jpg",
-    ready_time: 5,
+    ready_minute: 5,
     description: "This is the description",
     step_1: "Step 1 bla bla bla",
     step_2: "Step 2 bla bla bla",
