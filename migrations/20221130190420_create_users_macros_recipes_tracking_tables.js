@@ -21,7 +21,7 @@ exports.up = function (knex) {
       .createTable("macros", (table) => {
         table.increments("id").primary();
         table
-          .integer("users_id")
+          .integer("user_id")
           .notNullable()
           .unsigned()
           .references("id")
@@ -40,9 +40,9 @@ exports.up = function (knex) {
       //RECIPES TABLE
       .createTable("recipes", (table) => {
         table.increments("id").primary();
-        //USER ID IS OPTIONAL
+        //POSTER ID IS OPTIONAL
         table
-          .integer("users_id")
+          .integer("poster_id")
           .unsigned()
           .references("id")
           .inTable("users")
@@ -66,11 +66,11 @@ exports.up = function (knex) {
         table.string("ingredient").notNullable();
         table.timestamp("updated_at").defaultTo(knex.fn.now());
       })
-      //RECIPES AND INGREDIENTS TABLE
+      //RECIPES_INGREDIENTS TABLE
       .createTable("recipes_ingredients", (table) => {
         table.increments("id").primary();
         table
-          .integer("recipes_id")
+          .integer("recipe_id")
           .notNullable()
           .unsigned()
           .references("id")
@@ -78,7 +78,7 @@ exports.up = function (knex) {
           .onUpdate("CASCADE")
           .onDelete("CASCADE");
         table
-          .integer("ingredients_id")
+          .integer("ingredient_id")
           .notNullable()
           .unsigned()
           .references("id")
@@ -87,12 +87,11 @@ exports.up = function (knex) {
           .onDelete("CASCADE");
         table.timestamp("updated_at").defaultTo(knex.fn.now());
       })
-      //RECIPE COMMENTS TABLE
-      .createTable("recipes_comments", (table) => {
+      //RECIPES_USERS TABLE
+      .createTable("recipes_users", (table) => {
         table.increments("id").primary();
-        table.string("comment").notNullable();
         table
-          .integer("recipes_id")
+          .integer("recipe_id")
           .notNullable()
           .unsigned()
           .references("id")
@@ -100,11 +99,33 @@ exports.up = function (knex) {
           .onUpdate("CASCADE")
           .onDelete("CASCADE");
         table
-          .integer("users_id")
+          .integer("user_id")
+          .notNullable()
+          .unsigned()
+          .references("id")
+          .inTable("users")
+          .onUpdate("CASCADE")
+          .onDelete("CASCADE");
+        table.timestamp("updated_at").defaultTo(knex.fn.now());
+      })
+      //COMMENTS TABLE
+      .createTable("comments", (table) => {
+        table.increments("id").primary();
+        table.string("comment").notNullable();
+        table
+          .integer("recipe_id")
           .notNullable()
           .unsigned()
           .references("id")
           .inTable("recipes")
+          .onUpdate("CASCADE")
+          .onDelete("CASCADE");
+        table
+          .integer("user_id")
+          .notNullable()
+          .unsigned()
+          .references("id")
+          .inTable("users")
           .onUpdate("CASCADE")
           .onDelete("CASCADE");
         table.timestamp("updated_at").defaultTo(knex.fn.now());
@@ -119,6 +140,7 @@ exports.up = function (knex) {
 exports.down = function (knex) {
   return knex.schema
     .dropTable("recipes_comments")
+    .dropTable("recipes_users")
     .dropTable("recipes_ingredients")
     .dropTable("ingredients")
     .dropTable("recipes")

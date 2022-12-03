@@ -1,9 +1,10 @@
 const ingredients = require("../seeds_data/ingredients");
 const macros = require("../seeds_data/macros");
-const recipes_comments = require("../seeds_data/recipes_comments");
+const comments = require("../seeds_data/comments");
 const recipes_ingredients = require("../seeds_data/recipes_ingredients");
 const recipes = require("../seeds_data/recipes");
 const users = require("../seeds_data/users");
+const recipes_users = require("../seeds_data/recipes_users");
 
 exports.seed = function (knex) {
   //SEED USERS TABLE
@@ -41,12 +42,19 @@ exports.seed = function (knex) {
       .then(() => {
         return knex("recipes_ingredients").insert(recipes_ingredients);
       })
-      //SEED RECIPE COMMENTS TABLE
+      //SEED COMMENTS TABLE
       .then(() => {
-        return knex("recipes_comments").del();
+        return knex("comments").del();
       })
       .then(() => {
-        return knex("recipes_comments").insert(recipes_comments);
+        return knex("comments").insert(comments);
+      })
+      //SEED RECIPES_USERS TABLE
+      .then(() => {
+        return knex("recipes_users").del();
+      })
+      .then(() => {
+        return knex("recipes_users").insert(recipes_users);
       })
   );
 };
