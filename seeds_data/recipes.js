@@ -14,8 +14,8 @@ module.exports = [
   },
   {
     id: 2,
-    users_id: 1,
-    recipe_name: "My recipe",
+    poster_id: 1,
+    recipe_name: "My recipe 1",
     image: "https://spoonacular.com/recipeImages/715497-312x231.jpg",
     ready_minute: 5,
     description: "This is the description",
@@ -25,8 +25,8 @@ module.exports = [
   },
   {
     id: 3,
-    users_id: 2,
-    recipe_name: "My recipe",
+    poster_id: 2,
+    recipe_name: "My recipe 2",
     image: "https://spoonacular.com/recipeImages/715497-312x231.jpg",
     ready_minute: 5,
     description: "This is the description",

@@ -1,7 +1,7 @@
 module.exports = [
   {
     id: 1,
-    users_id: 1,
+    user_id: 1,
     macro_name: "simon first macro",
     bmi: 30,
     bmr: 2000,
@@ -12,7 +12,7 @@ module.exports = [
   },
   {
     id: 2,
-    users_id: 2,
+    user_id: 2,
     macro_name: "greg first macro",
     bmi: 28,
     bmr: 2500,
