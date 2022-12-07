@@ -5,7 +5,7 @@ const app = express();
 const jwt = require("jsonwebtoken");
 URL = process.env.WEB_URL || 9000;
 const loginRoute = require("./routes/loginRoute");
-const userProfileRoute = require("./routes/userProfile");
+const userProfileRoute = require("./routes/userProfileRoute");
 app.use(cors());
 app.use(express.json());
 
