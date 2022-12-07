@@ -29,8 +29,6 @@ exports.up = function (knex) {
           .onUpdate("CASCADE")
           .onDelete("CASCADE");
         table.string("macro_name").notNullable();
-        table.integer("bmi").notNullable();
-        table.integer("bmr").notNullable();
         table.integer("targeted_weight").notNullable();
         table.string("activity").notNullable();
         table.integer("tdee").notNullable();

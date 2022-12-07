@@ -5,12 +5,14 @@ const app = express();
 const jwt = require("jsonwebtoken");
 URL = process.env.WEB_URL || 9000;
 const loginRoute = require("./routes/loginRoute");
-const userProfileRoute = require("./routes/userProfile");
+const userProfileRoute = require("./routes/userProfileRoute");
+const macroRoute = require("./routes/macrosRoute");
 app.use(cors());
 app.use(express.json());
 
 //USE ROUTES
 app.use("/login", loginRoute);
+app.use("/macros-list", macroRoute);
 app.use("/user-profile", userProfileRoute);
 //START A SERVER
 app.listen(URL, (req, res) => {
