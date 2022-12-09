@@ -3,23 +3,27 @@ const knex = require("knex")(require("../knexfile"));
 
 exports.postNewMacro = (req, res) => {
   if (req.user) {
-    const { user_id, macro_name, targeted_weight, activity, tdee, tdee_need } =
-      req.body;
-    console.log(
+    const {
       user_id,
       macro_name,
       targeted_weight,
       activity,
       tdee,
-      tdee_need
-    );
+      tdee_need,
+      protein_ratio,
+      fat_ratio,
+      carb_ratio,
+    } = req.body;
     if (
       !user_id ||
       !macro_name ||
       !targeted_weight ||
       !activity ||
       !tdee ||
-      !tdee_need
+      !tdee_need ||
+      !protein_ratio ||
+      !carb_ratio ||
+      !fat_ratio
     ) {
       res.status(201).send("Please post a correct macro");
     } else {

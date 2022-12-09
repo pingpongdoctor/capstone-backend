@@ -8,7 +8,6 @@ exports.login = (req, res) => {
   //Access the users table
   knex("users")
     .then((data) => {
-      console.log(req.body);
       if (req.body.email && req.body.password) {
         const foundUser = data.find(
           (user) =>
@@ -33,7 +32,6 @@ exports.login = (req, res) => {
             },
             JWT_SECRET
           );
-          console.log(jwtToken);
           //Response JWT token to the client
           res.status(200).send(jwtToken);
         } else {
