@@ -32,7 +32,6 @@ exports.login = (req, res) => {
             },
             JWT_SECRET
           );
-          console.log(jwtToken);
           //Response JWT token to the client
           res.status(200).send(jwtToken);
         } else {
