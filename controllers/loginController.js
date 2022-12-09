@@ -8,7 +8,6 @@ exports.login = (req, res) => {
   //Access the users table
   knex("users")
     .then((data) => {
-      console.log(req.body);
       if (req.body.email && req.body.password) {
         const foundUser = data.find(
           (user) =>
