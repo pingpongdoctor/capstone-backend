@@ -1,6 +1,9 @@
+const macros = require("../seeds_data/macros");
+
 require("dotenv").config();
 const knex = require("knex")(require("../knexfile"));
 
+//CALLBACK METHOD TO CREATE A NEW MACRO
 exports.postNewMacro = (req, res) => {
   if (req.user) {
     const {
@@ -35,5 +38,35 @@ exports.postNewMacro = (req, res) => {
     }
   } else {
     res.status(400).send("Can not find the user profile");
+  }
+};
+
+//CALLBACK METHOD TO GET ALL MACRO OF THE CURRENT USER
+exports.getAllMacros = (req, res) => {
+  if (req.user) {
+    knex("macros")
+      .where("user_id", req.user.id)
+      .then((data) => {
+        res.status(200).json(data);
+      })
+      .catch((error) => res.status(500).send("Can not get macros from server"));
+  } else {
+    res.status(400).send("Can not find the user");
+  }
+};
+
+//CALLBACK METHOD TO GET A DETAILED MACRO OF THE CURRENT USER
+exports.getOneMacro = (req, res) => {
+  if (req.user) {
+    knex("macros")
+      .where("id", req.params.id)
+      .then((data) => {
+        res.status(400).json(data[0]);
+      })
+      .catch((error) =>
+        res.status(500).send("Can not get the macro from server")
+      );
+  } else {
+    res.status(400).send("Can not find the user");
   }
 };
