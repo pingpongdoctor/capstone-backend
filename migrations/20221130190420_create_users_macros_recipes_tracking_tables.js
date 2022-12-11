@@ -30,9 +30,8 @@ exports.up = function (knex) {
           .onDelete("CASCADE");
         table.string("macro_name").notNullable();
         table.integer("targeted_weight").notNullable();
-        table.integer("protein_ratio").notNullable();
-        table.integer("carb_ratio").notNullable();
-        table.integer("fat_ratio").notNullable();
+        table.string("body_type").notNullable();
+        table.string("goal").notNullable();
         table.string("activity").notNullable();
         table.integer("tdee").notNullable();
         table.integer("tdee_need").notNullable();

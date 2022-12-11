@@ -13,9 +13,8 @@ exports.postNewMacro = (req, res) => {
       activity,
       tdee,
       tdee_need,
-      protein_ratio,
-      fat_ratio,
-      carb_ratio,
+      goal,
+      body_type,
     } = req.body;
     if (
       !user_id ||
@@ -24,9 +23,8 @@ exports.postNewMacro = (req, res) => {
       !activity ||
       !tdee ||
       !tdee_need ||
-      !protein_ratio ||
-      !carb_ratio ||
-      !fat_ratio
+      !goal ||
+      !body_type
     ) {
       res.status(201).send("Please post a correct macro");
     } else {
