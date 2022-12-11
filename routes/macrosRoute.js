@@ -10,6 +10,7 @@ router
 router
   .route("/:id")
   .get(checkToken, macrosController.getOneMacro)
-  .delete(checkToken, macrosController.deleteMacro);
+  .delete(checkToken, macrosController.deleteMacro)
+  .put(checkToken, macrosController.updateMacro);
 
 module.exports = router;

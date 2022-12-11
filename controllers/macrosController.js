@@ -83,3 +83,20 @@ exports.deleteMacro = (req, res) => {
     res.status(400).send("Can not find the user");
   }
 };
+
+//CALLBACK FUNCTION TO UPDATE A MACRO
+exports.updateMacro = (req, res) => {
+  if (req.user) {
+    knex("macros")
+      .where("id", req.params.id)
+      .update(req.body)
+      .then((data) => {
+        res.status(400).send("The macro has been updated");
+      })
+      .catch((error) => {
+        res.status(500).send("Can not update the macro");
+      });
+  } else {
+    res.status(400).send("Can not find the user");
+  }
+};
