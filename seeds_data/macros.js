@@ -7,9 +7,8 @@ module.exports = [
     targeted_weight: 75, //this is used to count the time to achieve the targeted weight
     activity: "moderate",
     tdee_need: 2500, //this is used to count the macronutrients
-    protein_ratio: 25,
-    carb_ratio: 50,
-    fat_ratio: 25,
+    body_type: "ectomorph",
+    goal: "fast-lose",
   },
   {
     id: 2,
@@ -19,8 +18,7 @@ module.exports = [
     targeted_weight: 95,
     activity: "moderate",
     tdee_need: 2800,
-    protein_ratio: 30,
-    carb_ratio: 40,
-    fat_ratio: 30,
+    body_type: "endomorph",
+    goal: "slow-lose",
   },
 ];

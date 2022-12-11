@@ -13,12 +13,10 @@ exports.login = (req, res) => {
           (user) =>
             user.email === req.body.email && user.password === req.body.password
         );
-        console.log(foundUser);
         //Find user profile
         if (foundUser) {
           const { id, username, gender, age, weight, height, updated_at } =
             foundUser;
-          console.log(id);
           //Create a JWT token
           const jwtToken = jwt.sign(
             {
