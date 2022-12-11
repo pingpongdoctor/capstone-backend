@@ -59,7 +59,7 @@ exports.getOneMacro = (req, res) => {
     knex("macros")
       .where("id", req.params.id)
       .then((data) => {
-        res.status(400).json(data[0]);
+        res.status(200).json(data[0]);
       })
       .catch((error) => res.status(500).send("Can not get the macro"));
   } else {
@@ -71,9 +71,12 @@ exports.getOneMacro = (req, res) => {
 exports.deleteMacro = (req, res) => {
   if (req.user) {
     knex("macros")
+      .del()
       .where("id", req.params.id)
-      .delete()
-      .then((data) => res.status(400).send("The macro has been deleted"))
+      .then((data) => {
+        console.log("running");
+        res.status(200).send("The macro has been deleted");
+      })
       .catch((error) => {
         res.status(500).send("Can not delete the macro");
       });
@@ -89,7 +92,7 @@ exports.updateMacro = (req, res) => {
       .where("id", req.params.id)
       .update(req.body)
       .then((data) => {
-        res.status(400).send("The macro has been updated");
+        res.status(200).send("The macro has been updated");
       })
       .catch((error) => {
         res.status(500).send("Can not update the macro");
