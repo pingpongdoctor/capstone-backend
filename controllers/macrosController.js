@@ -68,3 +68,18 @@ exports.getOneMacro = (req, res) => {
     res.status(400).send("Can not find the user");
   }
 };
+
+//CALLBACK FUNCTION TO DELETE A MACRO OF A USER
+exports.deleteMacro = (req, res) => {
+  if (req.user) {
+    knex("macros")
+      .where("id", req.params.id)
+      .delete()
+      .then((data) => res.status(400).send("The macro has been deleted"))
+      .catch((error) => {
+        res.status(500).send("Can not delete the macro");
+      });
+  } else {
+    res.status(400).send("Can not find the user");
+  }
+};

@@ -7,6 +7,9 @@ router
   .post(checkToken, macrosController.postNewMacro)
   .get(checkToken, macrosController.getAllMacros);
 
-router.route("/:id").get(checkToken, macrosController.getOneMacro);
+router
+  .route("/:id")
+  .get(checkToken, macrosController.getOneMacro)
+  .delete(checkToken, macrosController.deleteMacro);
 
 module.exports = router;
