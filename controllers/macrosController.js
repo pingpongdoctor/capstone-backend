@@ -61,9 +61,7 @@ exports.getOneMacro = (req, res) => {
       .then((data) => {
         res.status(400).json(data[0]);
       })
-      .catch((error) =>
-        res.status(500).send("Can not get the macro from server")
-      );
+      .catch((error) => res.status(500).send("Can not get the macro"));
   } else {
     res.status(400).send("Can not find the user");
   }
