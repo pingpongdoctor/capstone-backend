@@ -1,6 +1,3 @@
-const macros = require("../seeds_data/macros");
-
-require("dotenv").config();
 const knex = require("knex")(require("../knexfile"));
 
 //CALLBACK METHOD TO CREATE A NEW MACRO
