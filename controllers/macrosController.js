@@ -1,6 +1,3 @@
-const macros = require("../seeds_data/macros");
-
-require("dotenv").config();
 const knex = require("knex")(require("../knexfile"));
 
 //CALLBACK METHOD TO CREATE A NEW MACRO
@@ -15,6 +12,10 @@ exports.postNewMacro = (req, res) => {
       tdee_need,
       goal,
       body_type,
+      gender,
+      age,
+      weight,
+      height,
     } = req.body;
     if (
       !user_id ||
@@ -24,7 +25,11 @@ exports.postNewMacro = (req, res) => {
       !tdee ||
       !tdee_need ||
       !goal ||
-      !body_type
+      !body_type ||
+      !gender ||
+      !age ||
+      !weight ||
+      !height
     ) {
       res.status(201).send("Please post a correct macro");
     } else {

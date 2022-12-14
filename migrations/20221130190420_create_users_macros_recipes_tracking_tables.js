@@ -35,6 +35,10 @@ exports.up = function (knex) {
         table.string("activity").notNullable();
         table.integer("tdee").notNullable();
         table.integer("tdee_need").notNullable();
+        table.string("gender").notNullable();
+        table.integer("age").notNullable();
+        table.integer("weight").notNullable();
+        table.integer("height").notNullable();
         table.timestamp("updated_at").defaultTo(knex.fn.now());
       })
       //RECIPES TABLE
@@ -50,41 +54,12 @@ exports.up = function (knex) {
           .onDelete("CASCADE");
         table.string("recipe_name").notNullable();
         table.string("image").notNullable();
-        table.integer("ready_minute").notNullable();
-        table.string("description").notNullable();
-        table.string("step_1").notNullable();
-        table.string("step_2").notNullable();
-        table.string("step_3");
-        table.string("step_4");
-        table.string("step_5");
+        table.string("level").notNullable();
+        table.integer("ready_time").notNullable();
+        table.text("description").notNullable();
+        table.text("ingredients").notNullable();
+        table.text("directions").notNullable();
         table.integer("likes").notNullable();
-        table.timestamp("updated_at").defaultTo(knex.fn.now());
-      })
-      //INGREDIENTS TABLE
-      .createTable("ingredients", (table) => {
-        table.increments("id").primary();
-        table.string("ingredient").notNullable();
-        table.timestamp("updated_at").defaultTo(knex.fn.now());
-      })
-      //RECIPES_INGREDIENTS TABLE
-      .createTable("recipes_ingredients", (table) => {
-        table.increments("id").primary();
-        table
-          .integer("recipe_id")
-          .notNullable()
-          .unsigned()
-          .references("id")
-          .inTable("recipes")
-          .onUpdate("CASCADE")
-          .onDelete("CASCADE");
-        table
-          .integer("ingredient_id")
-          .notNullable()
-          .unsigned()
-          .references("id")
-          .inTable("ingredients")
-          .onUpdate("CASCADE")
-          .onDelete("CASCADE");
         table.timestamp("updated_at").defaultTo(knex.fn.now());
       })
       //RECIPES_USERS TABLE
@@ -141,8 +116,6 @@ exports.down = function (knex) {
   return knex.schema
     .dropTable("recipes_comments")
     .dropTable("recipes_users")
-    .dropTable("recipes_ingredients")
-    .dropTable("ingredients")
     .dropTable("recipes")
     .dropTable("macros")
     .dropTable("users");
