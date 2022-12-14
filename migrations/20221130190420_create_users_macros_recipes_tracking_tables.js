@@ -35,6 +35,10 @@ exports.up = function (knex) {
         table.string("activity").notNullable();
         table.integer("tdee").notNullable();
         table.integer("tdee_need").notNullable();
+        table.string("gender").notNullable();
+        table.integer("age").notNullable();
+        table.integer("weight").notNullable();
+        table.integer("height").notNullable();
         table.timestamp("updated_at").defaultTo(knex.fn.now());
       })
       //RECIPES TABLE
