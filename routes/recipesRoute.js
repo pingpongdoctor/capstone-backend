@@ -6,6 +6,15 @@ const recipesController = require("../controllers/recipesController");
 router.route("/").get(recipesController.getAllRecipes);
 
 //ROUTE TO GET A SINGLE RECIPE
-router.route("/:id").get(recipesController.getSingleRecipe);
+router
+  .route("/:id")
+  .get(recipesController.getSingleRecipe)
+  .put(recipesController.likeRecipe);
+
+//ROUTE TO GET COMMENTS OF A RECIPE
+router
+  .route("/:id/comments")
+  .get(recipesController.getAllComments)
+  .post(checkToken, recipesController.createComment);
 
 module.exports = router;
