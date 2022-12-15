@@ -87,6 +87,7 @@ exports.up = function (knex) {
       .createTable("comments", (table) => {
         table.increments("id").primary();
         table.string("comment").notNullable();
+        table.integer("likes").notNullable();
         table
           .integer("recipe_id")
           .notNullable()
