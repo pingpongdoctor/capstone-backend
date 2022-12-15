@@ -17,4 +17,9 @@ router
   .get(recipesController.getAllComments)
   .post(checkToken, recipesController.createComment);
 
+//ROUTE TO DELETE A COMMENT
+router
+  .route("/:recipeId/comments/:commentId")
+  .delete(checkToken, recipesController.deleteComment);
+
 module.exports = router;

@@ -67,5 +67,24 @@ exports.createComment = (req, res) => {
           res.status(500).send("Can not create a new comment");
         });
     }
+  } else {
+    res.status(400).send("Can not find the user");
+  }
+};
+
+//CALLBACK FUNCTION TO DELETE A A COMMENT
+exports.deleteComment = (req, res) => {
+  if (req.user) {
+    knex("comments")
+      .where("id", req.params.commentId)
+      .del()
+      .then((data) => {
+        res.status(200).send("The comment is deleted");
+      })
+      .catch((error) => {
+        res.status(500).send("Can not delete the comment");
+      });
+  } else {
+    res.status(400).send("Can not find the user");
   }
 };
