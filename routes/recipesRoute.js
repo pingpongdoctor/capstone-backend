@@ -20,6 +20,7 @@ router
 //ROUTE TO DELETE A COMMENT
 router
   .route("/:recipeId/comments/:commentId")
+  .put(recipesController.likeComment)
   .delete(checkToken, recipesController.deleteComment);
 
 module.exports = router;

@@ -50,7 +50,7 @@ exports.getAllComments = (req, res) => {
     });
 };
 
-//CALLBACK FUNCTION TO POST A RECIPE COMMENT
+//CALLBACK FUNCTION TO POST A COMMENT
 exports.createComment = (req, res) => {
   if (req.user) {
     const { comment, recipe_id, user_id } = req.body;
@@ -58,7 +58,6 @@ exports.createComment = (req, res) => {
       res.status(400).send("Please upload the valid comment");
     } else {
       knex("comments")
-        .where("recipe_id", req.params.id)
         .insert({ ...req.body, likes: 0 })
         .then((data) => {
           res.status(201).send("The comment is created");
@@ -72,7 +71,7 @@ exports.createComment = (req, res) => {
   }
 };
 
-//CALLBACK FUNCTION TO DELETE A A COMMENT
+//CALLBACK FUNCTION TO DELETE A COMMENT
 exports.deleteComment = (req, res) => {
   if (req.user) {
     knex("comments")
@@ -87,4 +86,17 @@ exports.deleteComment = (req, res) => {
   } else {
     res.status(400).send("Can not find the user");
   }
+};
+
+//CALLBACK FUNCTION TO LIKE A COMMENT
+exports.likeComment = (req, res) => {
+  knex("comments")
+    .where("id", req.params.commentId)
+    .increment("likes", 1)
+    .then((data) => {
+      res.status(200).send("Like number of the comment is updated");
+    })
+    .catch((error) => {
+      res.status(500).send("Can not update the like number");
+    });
 };
