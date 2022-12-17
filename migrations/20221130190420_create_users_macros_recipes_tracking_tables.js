@@ -44,7 +44,6 @@ exports.up = function (knex) {
       //RECIPES TABLE
       .createTable("recipes", (table) => {
         table.increments("id").primary();
-        //POSTER ID IS OPTIONAL
         table
           .integer("poster_id")
           .unsigned()

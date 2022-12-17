@@ -3,7 +3,10 @@ const { checkToken } = require("../checkToken");
 const recipesController = require("../controllers/recipesController");
 
 //ROUTE TO GET ALL RECIPES
-router.route("/").get(recipesController.getAllRecipes);
+router
+  .route("/")
+  .get(recipesController.getAllRecipes)
+  .post(checkToken, recipesController.addRecipe);
 
 //ROUTE TO GET A SINGLE RECIPE
 router
