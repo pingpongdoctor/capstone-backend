@@ -13,7 +13,6 @@ app.use(express.json());
 
 //USE ROUTES
 app.use("/recipe-library", recipesRoute);
-// app.use("/poster-profile", posterRoute);
 app.use("/login", loginRoute);
 app.use("/macros-list", macrosRoute);
 app.use("/user-profile", userProfileRoute);

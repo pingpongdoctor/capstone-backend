@@ -26,4 +26,7 @@ router
   .put(recipesController.likeComment)
   .delete(checkToken, recipesController.deleteComment);
 
+//ROUTE TO PUT A RECIPE
+router.route("/:id/update").put(checkToken, recipesController.updateRecipe);
+
 module.exports = router;
