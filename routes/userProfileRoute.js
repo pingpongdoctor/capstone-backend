@@ -6,4 +6,6 @@ router
   .route("/")
   .get(checkToken, userProfileController.getUserProfile)
   .put(checkToken, userProfileController.updateUserProfile);
+
+router.route("/:id").get(userProfileController.getUserBasicInfor);
 module.exports = router;

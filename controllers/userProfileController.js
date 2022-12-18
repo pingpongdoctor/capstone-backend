@@ -46,3 +46,16 @@ exports.updateUserProfile = (req, res) => {
     res.status(400).send("Make sure You have already log in!");
   }
 };
+
+//CALLBACK METHOD TO GET THE USER NAME
+exports.getUserBasicInfor = (req, res) => {
+  knex("users")
+    .where("id", req.params.id)
+    .select("username")
+    .then((data) => {
+      res.status(200).json(data[0]);
+    })
+    .catch((error) => {
+      res.status(500).send("Can not get the user basic information");
+    });
+};
