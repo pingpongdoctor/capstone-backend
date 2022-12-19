@@ -1,6 +1,7 @@
 module.exports = [
   {
     id: 1,
+    poster_id: 1,
     recipe_name: "The Best Scalloped Potatoes",
     level: "easy",
     image:
@@ -44,6 +45,23 @@ module.exports = [
       "Nonstick baking spray, for the pans.One 15-ounce box lemon cake mix;1/2 cup vegetable oil;3 large eggs;2 cups powdered sugar Splash of milk;2 tablespoons raspberry preserves;2 lemons",
     directions:
       "For the cakes: Grease 18 mini Bundt pan cavities with the baking spray.;Prepare the cake mix with the vegetable oil, eggs and 1 cup water according to the package instructions. Divide the batter among the cavities of the mini Bundt pans. Bake until cooked through, 20 to 22 minutes. Remove from the oven and let cool for about 30 minutes, then flip them out of the pans;Make the icing: Whisk together the powdered sugar and milk in a bowl until very thick but still pourable. Fold in the raspberry preserves.;Pour a tablespoon of icing over each of the cakes, letting it drip down the sides. Zest the lemons over the cakes.",
+    likes: 15,
+  },
+
+  {
+    id: 4,
+    poster_id: 2,
+    recipe_name: "Spaghetti and Meatballs",
+    level: "easy",
+    image:
+      "https://res.cloudinary.com/dtdzvyf4s/image/upload/v1671433173/meatball_fjwk7g.png",
+    ready_time: 75,
+    description:
+      "Spaghetti and Meatballs in homemade marinara sauce. These are amazing “WOW”-inducing MEATBALLS – so tasty and juicy and BIG! We’re sharing all of our secrets for incredibly tender and flavorful meatballs.",
+    ingredients:
+      "1 slice whole-wheat sandwich bread, ground into coarse crumbs;1 portobello mushroom, stem removed and chopped;1 (28-ounce) can whole peeled tomatoes in juice, crushed by hand;1/2 cup low-sodium beef broth;8 ounces whole-wheat spaghetti;3 sprigs fresh thyme;1 large egg white;8 ounces ground sirloin",
+    directions:
+      "Pulse the sandwich bread in a food processor to form coarse crumbs. Add the beef, 1/4 cup onion, mushroom, 1 tablespoon garlic, parsley, and egg white, season with salt, pepper and nutmeg; pulse again to finely chop and combine. Portion into about 20 meatballs (about 1-inch in diameter) and place on a plate.;In a medium saucepan, heat the oil over medium heat; add the remaining garlic and onion. Cook, stirring occasionally, until tender, about 10 to 12 minutes. Stir in the tomatoes and broth. Tie sprigs of basil and thyme together with kitchen twine, add to the tomatoes. Bring to a simmer and cook, stirring occasionally, 20 minutes. Add the meatballs and continue to simmer, without stirring, until the meatballs are partially cooked, about 10 minutes. Turn the meatballs, cook 10 minutes more or until fully cooked.;Meanwhile, cook the pasta according to package directions in boiling salted water, serve the meatballs and sauce over the spaghetti.",
     likes: 15,
   },
 ];
