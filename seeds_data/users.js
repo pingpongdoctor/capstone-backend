@@ -1,7 +1,7 @@
 module.exports = [
   {
     id: 1,
-    username: "simon",
+    username: "Simon",
     email: "simon@gmail.com",
     password: "12345",
     gender: "male",
@@ -11,7 +11,7 @@ module.exports = [
   },
   {
     id: 2,
-    username: "greg",
+    username: "Greg",
     email: "greg@gmail.com",
     password: "123456",
     gender: "male",

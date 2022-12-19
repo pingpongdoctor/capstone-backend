@@ -1,5 +1,3 @@
-const comments = require("../seeds_data/comments");
-
 const knex = require("knex")(require("../knexfile"));
 
 //CALLBACK METHOD TO GET ALL RECIPES
@@ -49,35 +47,6 @@ exports.getAllComments = (req, res) => {
       res.status(500).send("Can not get comments");
     });
 };
-
-//CALLBACK METHOD TO POST A RECIPE
-// exports.postNewRecipe = (req, res) => {
-//   if (req.user) {
-//     if (
-//       !poster_id ||
-//       !recipe_name ||
-//       !image ||
-//       !level ||
-//       !ready_time ||
-//       !description ||
-//       !ingredients ||
-//       !directions
-//     ) {
-//       res.status(400).send("Please post a correct recipe");
-//     } else {
-//       knex("recipes")
-//         .insert(req.body)
-//         .then((data) => {
-//           res.status(201).send("The recipe is created");
-//         })
-//         .catch((error) => {
-//           console.log(error);
-//         });
-//     }
-//   } else {
-//     res.status(400);
-//   }
-// };
 
 //CALLBACK METHOD TO POST A NEW RECIPE
 exports.addRecipe = (req, res) => {
