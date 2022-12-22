@@ -17,6 +17,6 @@ app.use("/login", loginRoute);
 app.use("/macros-list", macrosRoute);
 app.use("/user-profile", userProfileRoute);
 //START A SERVER
-app.listen(URL, (req, res) => {
+app.listen(PORT, (req, res) => {
   console.log(`Running website at http://localhost:${PORT}`);
 });
