@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { user, password } = process.env;
+const { user, password, database, host } = process.env;
 // Update with your config settings.
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
@@ -7,8 +7,8 @@ const { user, password } = process.env;
 module.exports = {
   client: "mysql",
   connection: {
-    host: "127.0.0.1",
-    database: "capstone",
+    host,
+    database,
     user,
     password,
   },
