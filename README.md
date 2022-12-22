@@ -2,9 +2,13 @@
 
 # Build Your Diet
 
+https://buildyourdiet.netlify.app/
+
 This project is about building a website to help users designing their own diets quickly and effortlessly. Users can calculate their suitable macronutrient ratios and diversify their dishes by refering to the recipe library. All pages are responsive in different breakpoints such as mobile, tablet and desktop breakpoints.
 
-## Features
+![](https://github.com/pingpongdoctor/capstone-frontend/blob/recipes-list-page/demo.gif)
+
+## Key Features
 
 - Allow users to have their own accounts
 - Calculate macronutrients
@@ -18,7 +22,7 @@ This project is about building a website to help users designing their own diets
 
 ## Tech Stack Frontend
 
-- React JS
+- React JS.
 - React Component - React Components are applied to create reuseable components and create multi-view single pages.
 - Slick Library - React slick is a carousel component built with React. The homepage has an image carousel that is built by using this library.
 - Chart.js Library - React components for Chart.js is one of the most popular charting libraries. The website uses the Pie chart and the Line chart from this library.
@@ -28,7 +32,7 @@ This project is about building a website to help users designing their own diets
 ## Tech Stack Backend
 
 - JWT token - JWT token helps authenticating users.
-- Node.js
+- Node.js.
 - Express - Express framework is used to build endpoints for fetching data from tables.
 - Knex library - Knex is a SQL query builder that helps form SQL table by using javascript codes and query data from SQL tables such as user data, macro data, recipe data and comment data.
 
@@ -62,7 +66,7 @@ Create an env file that includes all information as same as the env.sample file.
 
 Change the values of user and password variables so that they matches with your SQL app's username and password.
 
-Run the below commands to use migration file and seed file to form the SQL table
+Run the below commands to use migration file and seed file to form the SQL tables.
 
 ```bash
   npx knex migration:latest
