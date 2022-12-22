@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
-URL = process.env.WEB_URL || 9000;
+PORT = process.env.PORT || 9000;
 const loginRoute = require("./routes/loginRoute");
 const userProfileRoute = require("./routes/userProfileRoute");
 const macrosRoute = require("./routes/macrosRoute");
@@ -18,5 +18,5 @@ app.use("/macros-list", macrosRoute);
 app.use("/user-profile", userProfileRoute);
 //START A SERVER
 app.listen(URL, (req, res) => {
-  console.log(`Running website at http://localhost:${URL}`);
+  console.log(`Running website at http://localhost:${PORT}`);
 });
