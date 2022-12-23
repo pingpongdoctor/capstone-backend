@@ -8,6 +8,8 @@ router
   .get(recipesController.getAllRecipes)
   .post(checkToken, recipesController.addRecipe);
 
+//ROUTE TO GET ALL SAVED RECIPES OF A USER
+router.route("/saved-recipe").get(checkToken, recipesController.getUserRecipes);
 //ROUTE TO GET A SINGLE RECIPE
 router
   .route("/:id")

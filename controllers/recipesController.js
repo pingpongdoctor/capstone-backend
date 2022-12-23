@@ -1,3 +1,5 @@
+const recipes_users = require("../seeds_data/recipes_users");
+
 const knex = require("knex")(require("../knexfile"));
 
 //CALLBACK METHOD TO GET ALL RECIPES
@@ -98,6 +100,37 @@ exports.updateRecipe = (req, res) => {
       })
       .catch((error) => {
         res.status(500).send("Can not update the recipe");
+      });
+  } else {
+    res.status(400).send("Can not find the user");
+  }
+};
+
+//CALLBACK METHOD TO GET ALL RECIPE OF A USER
+exports.getUserRecipes = (req, res) => {
+  if (req.user) {
+    knex("recipes_users")
+      .join("users", "users.id", "recipes_users.user_id")
+      .join("recipes", "recipes.id", "recipes_users.recipe_id")
+      .select(
+        "recipes.id",
+        "recipes.poster_id",
+        "recipes.recipe_name",
+        "recipes.image",
+        "recipes.level",
+        "recipes.ready_time",
+        "recipes.description",
+        "recipes.ingredients",
+        "recipes.directions",
+        "recipes.likes",
+        "recipes.updated_at"
+      )
+      .where("recipes_users.user_id", req.user.id)
+      .then((data) => {
+        res.status(200).json(data);
+      })
+      .catch((error) => {
+        res.status(500).send("Can not get the data");
       });
   } else {
     res.status(400).send("Can not find the user");
