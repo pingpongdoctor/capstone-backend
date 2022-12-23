@@ -14,7 +14,8 @@ router.route("/saved-recipe").get(checkToken, recipesController.getUserRecipes);
 router
   .route("/:id")
   .get(recipesController.getSingleRecipe)
-  .put(recipesController.likeRecipe);
+  .put(recipesController.likeRecipe)
+  .delete(checkToken, recipesController.deleteRecipe);
 
 //ROUTE TO GET COMMENTS OF A RECIPE
 router

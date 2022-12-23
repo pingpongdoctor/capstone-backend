@@ -106,6 +106,23 @@ exports.updateRecipe = (req, res) => {
   }
 };
 
+//CALLBACK METHOD TO DELETE A RECIPE
+exports.deleteRecipe = (req, res) => {
+  if (req.user) {
+    knex("recipes")
+      .where("id", req.params.id)
+      .del()
+      .then((data) => {
+        res.status(200).send("The recipe is deleted");
+      })
+      .catch((error) => {
+        res.status(500).send("Can not delete the recipe");
+      });
+  } else {
+    res.status(400).send("Can not find the user");
+  }
+};
+
 //CALLBACK METHOD TO GET ALL RECIPE OF A USER
 exports.getUserRecipes = (req, res) => {
   if (req.user) {
