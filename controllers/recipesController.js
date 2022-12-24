@@ -172,6 +172,38 @@ exports.deleteRecipeFromSavedList = (req, res) => {
   }
 };
 
+//CALLBACK METHOD TO ADD A RECIPE TO THE SAVED RECIPE LIST
+exports.addRecipeToSavedList = (req, res) => {
+  if (req.user) {
+    if (recipe_id) {
+      knex("recipes_users")
+        .insert({ ...req.body, user_id: req.user.id })
+        .then((data) => {
+          res.status(201).send("This recipe is added to your list");
+        })
+        .catch((error) => {
+          res.status(500).send("Can not add this recipe to your list");
+        });
+    } else {
+      res.status(400).send("Please post the correct object");
+    }
+  } else {
+    res.status(400).send("Can not find the user");
+  }
+};
+
+//CALLBACK METHOD TO GET RECIPES-USERS DATA
+exports.getRecipeUserData = (req, res) => {
+  knex("recipes_users")
+    .select("recipes_users.user_id", "recipes_users.recipe_id")
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((error) => {
+      res.status(500).send("Can not get the data");
+    });
+};
+
 //CALLBACK METHOD TO POST A COMMENT
 exports.createComment = (req, res) => {
   if (req.user) {

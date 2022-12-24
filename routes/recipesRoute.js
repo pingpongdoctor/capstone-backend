@@ -8,10 +8,14 @@ router
   .get(recipesController.getAllRecipes)
   .post(checkToken, recipesController.addRecipe);
 
+//ROUTE TO GET THE DATA OF RECIPE-USER
+router.route("/recipes-users").get(recipesController.getRecipeUserData);
+
 //ROUTE TO GET ALL SAVED RECIPES OF A USER
 router
   .route("/saved-recipes")
-  .get(checkToken, recipesController.getUserRecipes);
+  .get(checkToken, recipesController.getUserRecipes)
+  .post(checkToken, recipesController.addRecipeToSavedList);
 
 //ROUTE TO DELETE A RECIPE FROM THE SAVING LIST
 router
