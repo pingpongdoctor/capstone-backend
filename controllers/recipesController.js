@@ -1,5 +1,3 @@
-const recipes_users = require("../seeds_data/recipes_users");
-
 const knex = require("knex")(require("../knexfile"));
 
 //CALLBACK METHOD TO GET ALL RECIPES
@@ -175,7 +173,10 @@ exports.deleteRecipeFromSavedList = (req, res) => {
 //CALLBACK METHOD TO ADD A RECIPE TO THE SAVED RECIPE LIST
 exports.addRecipeToSavedList = (req, res) => {
   if (req.user) {
-    if (recipe_id) {
+    const { recipe_id } = req.body;
+    if (!recipe_id) {
+      res.status(400).send("Please post the correct object");
+    } else {
       knex("recipes_users")
         .insert({ ...req.body, user_id: req.user.id })
         .then((data) => {
@@ -184,8 +185,6 @@ exports.addRecipeToSavedList = (req, res) => {
         .catch((error) => {
           res.status(500).send("Can not add this recipe to your list");
         });
-    } else {
-      res.status(400).send("Please post the correct object");
     }
   } else {
     res.status(400).send("Can not find the user");
