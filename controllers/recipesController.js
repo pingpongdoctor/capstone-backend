@@ -154,6 +154,24 @@ exports.getUserRecipes = (req, res) => {
   }
 };
 
+//CALLBACK METHOD TO DELETE A RECIPE FROM THE SAVED RECIPE LIST
+exports.deleteRecipeFromSavedList = (req, res) => {
+  if (req.user) {
+    knex("recipes_users")
+      .where("user_id", req.user.id)
+      .andWhere("recipe_id", req.params.id)
+      .del()
+      .then((data) => {
+        res.status(200).send("The recipe is deleted from your recipe list");
+      })
+      .catch((error) => {
+        res.status(500).send("Can not delete you recipe");
+      });
+  } else {
+    res.status(400).send("Can not find the user");
+  }
+};
+
 //CALLBACK METHOD TO POST A COMMENT
 exports.createComment = (req, res) => {
   if (req.user) {

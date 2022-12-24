@@ -9,7 +9,15 @@ router
   .post(checkToken, recipesController.addRecipe);
 
 //ROUTE TO GET ALL SAVED RECIPES OF A USER
-router.route("/saved-recipe").get(checkToken, recipesController.getUserRecipes);
+router
+  .route("/saved-recipes")
+  .get(checkToken, recipesController.getUserRecipes);
+
+//ROUTE TO DELETE A RECIPE FROM THE SAVING LIST
+router
+  .route("/saved-recipes/:id")
+  .delete(checkToken, recipesController.deleteRecipeFromSavedList);
+
 //ROUTE TO GET A SINGLE RECIPE
 router
   .route("/:id")
