@@ -14,24 +14,25 @@ exports.signupNewUser = (req, res) => {
   ) {
     res.status(400).send("Please post the correct object");
   } else {
+    //HASH THE PASSWORD
     bcrypt.hash(password, 10).then((hash) => {
-      const newObj = {
+      const postedObj = {
         ...req.body,
         password: hash,
       };
-      bcrypt.hash(email, 10).then((hash) => {
-        const postedObj = {
-          ...newObj,
-          email: hash,
-        };
-        knex("users")
-          .insert(postedObj)
-          .then((data) => {
-            res.status(201).send("New user profile is created");
-          })
-          .catch((error) => {
-            res.status(500).send("Can not create a new user");
-          });
+      knex("users").then((data) => {
+        //CHECK THE DUPLICATE EMAIL
+        const duplicateEmail = data.find((user) => user.email === email);
+        if (duplicateEmail) {
+          res.send("This email already exists");
+        } else {
+          //POST THE NEW USER TO THE DATABASE
+          knex("users")
+            .insert(postedObj)
+            .then((data) => {
+              res.status(201).send("New user profile is created");
+            });
+        }
       });
     });
   }
