@@ -11,7 +11,7 @@ module.exports = [
   },
   {
     id: 2,
-    username: "Greg",
+    username: "Greg123",
     email: "414c8120b0a49fb629d6f324812e23a9c64db3eeba78bc085d31dc78431304b1",
     password: "$2b$10$kcDjYUMzOI5yRVuLOk1lae8amGEVn1dMRIsx2q.tyJgemWJVXNsl.",
     gender: "male",
