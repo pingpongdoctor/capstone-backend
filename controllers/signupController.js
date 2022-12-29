@@ -24,7 +24,7 @@ exports.signupNewUser = (req, res) => {
         //CHECK THE DUPLICATE EMAIL
         const duplicateEmail = data.find((user) => user.email === email);
         if (duplicateEmail) {
-          res.send("This email already exists");
+          res.status(400).send("This email already exists");
         } else {
           //POST THE NEW USER TO THE DATABASE
           knex("users")
