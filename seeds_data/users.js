@@ -2,7 +2,7 @@ module.exports = [
   {
     id: 1,
     username: "Simon123",
-    email: "57eff67b26987155e3b96e28a6193d3c1a64d89b4fe4e84b9257c032f1ac2930",
+    email: "$2b$10$UWnqsktOVRP6TTfwJd7Y2OsDYKHeyYSds3PdS.5D1ZeCgwKMUVvge",
     password: "$2b$10$o/dI/fpP1Vek/E3wZdTKS.roaxmz5tM85uQ1vdcvh7McDY3wmrpFy",
     gender: "male",
     age: 29,
@@ -12,8 +12,8 @@ module.exports = [
   {
     id: 2,
     username: "Greg123",
-    email: "414c8120b0a49fb629d6f324812e23a9c64db3eeba78bc085d31dc78431304b1",
-    password: "$2b$10$kcDjYUMzOI5yRVuLOk1lae8amGEVn1dMRIsx2q.tyJgemWJVXNsl.",
+    email: "$2b$10$WO32Byr3sRoU844QmW9zrev6yrssECMjDXXU9KFP.Fmxp0LJX9K.i",
+    password: "$2b$10$oETlkxyJAZQQRpiepF8MPuaI2mATWj9fxdaSrLZYG1/h2muSwzdFG",
     gender: "male",
     age: 29,
     weight: 100,
