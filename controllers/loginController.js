@@ -15,35 +15,40 @@ exports.login = (req, res) => {
           //COMPARE THE PASSWORD WITH THE PASSWORD HASH
           bcrypt.compare(req.body.password, data[i].password, (err, result) => {
             if (result) {
-              const foundUser = data[i];
-              //IF USER IS FOUND AND THE EMAIL IS MATCHED
-              if (foundUser && foundUser.email === req.body.email) {
-                const {
-                  id,
-                  username,
-                  gender,
-                  age,
-                  weight,
-                  height,
-                  updated_at,
-                } = foundUser;
+              //COMPARE THE EMAIL WITH THE EMAIL HASH
+              bcrypt.compare(req.body.email, data[i].email, (err, result) => {
+                if (result) {
+                  const foundUser = data[i];
+                  //IF USER IS FOUND AND THE EMAIL IS MATCHED
+                  if (foundUser) {
+                    const {
+                      id,
+                      username,
+                      gender,
+                      age,
+                      weight,
+                      height,
+                      updated_at,
+                    } = foundUser;
 
-                //CREATE A JWT TOKEN
-                const jwtToken = jwt.sign(
-                  {
-                    id: id,
-                    username: username,
-                    gender: gender,
-                    age: age,
-                    weight: weight,
-                    height: height,
-                    updated_at: updated_at,
-                  },
-                  JWT_SECRET
-                );
-                //SEND JWT TOKEN TO THE FRONTEND
-                res.status(200).send(jwtToken);
-              }
+                    //CREATE A JWT TOKEN
+                    const jwtToken = jwt.sign(
+                      {
+                        id: id,
+                        username: username,
+                        gender: gender,
+                        age: age,
+                        weight: weight,
+                        height: height,
+                        updated_at: updated_at,
+                      },
+                      JWT_SECRET
+                    );
+                    //SEND JWT TOKEN TO THE FRONTEND
+                    res.status(200).send(jwtToken);
+                  }
+                }
+              });
             }
           });
         }
