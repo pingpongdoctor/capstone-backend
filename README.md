@@ -36,7 +36,7 @@ This project is about building a website to help users designing their own diets
 - Node.js
 - Express - Express framework is used to to create routes, deploy libraries and apply routes on the index.js file.
 - REST API - Use REST API for building endpoints to fetch data.
-- MySQL Workbench - This is a visual tool is used to build, query, and manage relational databases.
+- MySQL Workbench - This is a visual tool is used to build, and manage relational databases.
 - Knex library - Knex is applied to query databases such as user data, macro data, recipe data and comment data.
 - Bcrypt Library - The encrypted password and email on frontend are again encrypted on the backend by using the bcrypt library. This immensly enhance the security level for the website.
 
@@ -95,5 +95,5 @@ Since the website authenticates users by using JWT token, you have to log in to 
 
 ## Links
 
-- Link to [Frontend](https://github.com/pingpongdoctor/capstone-frontend)
-- Link to [Backend](https://github.com/pingpongdoctor/capstone-backend)
+- Link to [Frontend](https://github.com/pingpongdoctor/capstone-frontend/tree/main)
+- Link to [Backend](https://github.com/pingpongdoctor/capstone-backend/tree/main)
