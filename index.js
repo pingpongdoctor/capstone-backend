@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
-PORT = process.env.PORT || 80;
+PORT = process.env.PORT || 8080;
 const loginRoute = require("./routes/loginRoute");
 const userProfileRoute = require("./routes/userProfileRoute");
 const macrosRoute = require("./routes/macrosRoute");
