@@ -16,7 +16,7 @@ exports.login = async (req, res) => {
     //ACCESS USER TABLE
     const data = await knex("users");
     //USE FOR LOOP TO COMPARE THE HASHES WITH THE HEADER DATA AND SEARCH THE USER PROFILE INCASE THE HASHES MATCH THE POSTED PASSWORD
-
+    let jwtToken = "";
     for (let i = 0; i < data.length; i++) {
       //COMPARE THE PASSWORD WITH THE PASSWORD HASH
       const comparePasswordResult = await bcryptCompare(
@@ -39,7 +39,7 @@ exports.login = async (req, res) => {
           foundUser;
 
         //CREATE A JWT TOKEN
-        const jwtToken = jwt.sign(
+        jwtToken = jwt.sign(
           {
             id: id,
             username: username,
@@ -51,12 +51,16 @@ exports.login = async (req, res) => {
           },
           JWT_SECRET
         );
-
-        //SEND JWT TOKEN TO THE FRONTEND
-        res.status(200).send(jwtToken);
       }
     }
+    //CHECK IF JWTTOKEN IS SIGNED
+    if (jwtToken) {
+      //SEND JWT TOKEN TO THE FRONTEND
+      res.status(200).send(jwtToken);
+    } else {
+      res.status(400).send("Incorrect email and password");
+    }
   } catch (e) {
-    res.status(400).send("Please provide correct email and password!");
+    console.log(e);
   }
 };
