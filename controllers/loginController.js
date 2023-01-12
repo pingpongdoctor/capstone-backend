@@ -57,6 +57,6 @@ exports.login = async (req, res) => {
       }
     }
   } catch (e) {
-    res.status(400).send("Please provide correct email and password");
+    res.status(400).send("Please provide correct email and password!");
   }
 };
