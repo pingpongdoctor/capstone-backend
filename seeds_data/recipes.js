@@ -64,4 +64,36 @@ module.exports = [
       "Pulse the sandwich bread in a food processor to form coarse crumbs. Add the beef, 1/4 cup onion, mushroom, 1 tablespoon garlic, parsley, and egg white, season with salt, pepper and nutmeg; pulse again to finely chop and combine. Portion into about 20 meatballs (about 1-inch in diameter) and place on a plate.;In a medium saucepan, heat the oil over medium heat; add the remaining garlic and onion. Cook, stirring occasionally, until tender, about 10 to 12 minutes. Stir in the tomatoes and broth. Tie sprigs of basil and thyme together with kitchen twine, add to the tomatoes. Bring to a simmer and cook, stirring occasionally, 20 minutes. Add the meatballs and continue to simmer, without stirring, until the meatballs are partially cooked, about 10 minutes. Turn the meatballs, cook 10 minutes more or until fully cooked.;Meanwhile, cook the pasta according to package directions in boiling salted water, serve the meatballs and sauce over the spaghetti.",
     likes: 15,
   },
+  {
+    id: 5,
+    poster_id: 1,
+    recipe_name: "Hummus without tahini",
+    level: "medium",
+    image:
+      "https://res.cloudinary.com/dtdzvyf4s/image/upload/v1673547167/hummus_upt0cg.jpg",
+    ready_time: 50,
+    description:
+      "Enjoy our easy, budget-friendly hummus recipe with your favourite sides, such as pittas, crackers and crudités. Add more liquid from the can of chickpeas for a smoother hummus, if you like.",
+    ingredients:
+      "400g can chickpeas, drained (liquid reserved);½ small garlic clove, crushed, or ½ tsp garlic purée;1 tsp lemon juice;2 tbsp olive oil, plus a drizzle;pittas or vegetable crudités",
+    directions:
+      "Tip the chickpeas, garlic, lemon juice and olive oil into a small blender or food processor;Season and add 1 tbsp of the reserved liquid from the can of chickpeas;Blitz together until smooth, adding more of the reserved chickpea liquid to make a smoother hummus, if you like;Tip the hummus into a bowl, drizzle with more olive oil and chill until ready to serve. Serve with pittas or vegetable crudités.",
+    likes: 5,
+  },
+  {
+    id: 6,
+    poster_id: 1,
+    recipe_name: "Simple sushi",
+    level: "medium",
+    image:
+      "https://res.cloudinary.com/dtdzvyf4s/image/upload/v1673548033/sushi_srqnro.jpg",
+    ready_time: 40,
+    description:
+      "Kids can help with this Japanese dish. They can help cook the sticky rice and then roll and assemble the pieces with their preferred ingredients.",
+    ingredients:
+      "300g sushi rice;100ml rice wine vinegar;2 tbsp golden caster sugar;3 tbsp mayonnaise;25g bag nori (seaweed) sheets;cucumber strips;smoked salmon;white crabmeat;canned tuna",
+    directions:
+      "Pat out some rice. Lay a nori sheet on the mat, shiny-side down. Dip your hands in the vinegared water, then pat handfuls of rice on top in a 1cm thick layer, leaving the furthest edge from you clear;Use a spoon to spread out a thin layer of mayonnaise down the middle of the rice;Top the mayonnaise with a line of their favourite fillings – here we’ve used tuna and cucumber;Lift the edge of the mat over the rice, applying a little pressure to keep everything in a tight roll.",
+    likes: 5,
+  },
 ];
