@@ -1,7 +1,7 @@
 const knex = require("knex")(require("../knexfile"));
 const bcrypt = require("bcrypt");
 
-exports.signupNewUser = (req, res) => {
+exports.signupNewUser = async (req, res) => {
   const { username, email, password, gender, age, weight, height } = req.body;
   if (
     !username ||
@@ -15,35 +15,31 @@ exports.signupNewUser = (req, res) => {
     res.status(400).send("Please post the correct object");
   } else {
     //HASH THE PASSWORD
-    bcrypt.hash(password, 10).then((hash) => {
-      const newObj = {
-        ...req.body,
-        password: hash,
-      };
-      //HASH THE EMAIL
-      bcrypt.hash(email, 10).then((hash) => {
-        const postedObj = {
-          ...newObj,
-          email: hash,
-        };
-        knex("users").then((data) => {
-          //CHECK IF EMAIL IS DUPLICATE BY USING THE BCRYPT COMPARESYNC
-          let isEmailDuplicate = false;
-          for (let i = 0; i < data.length; i++) {
-            isEmailDuplicate = bcrypt.compareSync(email, data[i].email);
-          }
-          if (isEmailDuplicate === false) {
-            //CREATE A NEW USER ACCOUNT
-            knex("users")
-              .insert(postedObj)
-              .then((data) => {
-                res.status(201).send("New user profile is created");
-              });
-          } else {
-            res.status(400).send("This email already exists");
-          }
-        });
-      });
-    });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    //HASH THE EMAIL
+    const hashedEmail = await bcrypt.hash(email, 10);
+    //UPDATE THE POSTED SIGNUP USER PROFILE
+    const newObj = {
+      ...req.body,
+      password: hashedPassword,
+      email: hashedEmail,
+    };
+    //CHECK IF EMAIL IS DUPLICATE BY USING THE BCRYPT COMPARESYNC
+    const usersData = await knex("users");
+    let isEmailDuplicate = false;
+    //USE FOR LOOP TO CHECK THE DUPLICATE OF EMAIL
+    for (let i = 0; i < usersData.length; i++) {
+      isEmailDuplicate = await bcrypt.compare(email, usersData[i].email);
+      if (isEmailDuplicate === true) {
+        //IF THE EMAIL IS DUPLICATE, SEND A MESSAGE TO ANNOUCE
+        res.status(400).send("This email already exists");
+        break;
+      }
+    }
+    // //UPDATE A NEW USER PROFILE IF THERE IS NOT DUPLICATE
+    if (isEmailDuplicate === false) {
+      await knex("users").insert(newObj);
+      res.status(201).send("New user profile is created");
+    }
   }
 };
