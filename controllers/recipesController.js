@@ -7,7 +7,8 @@ exports.getAllRecipes = (req, res) => {
       res.status(200).json(data);
     })
     .catch((error) => {
-      res.status(500).send("Can not fetch the recipes data");
+      res.status(500).json(error);
+      console.log(error);
     });
 };
 
