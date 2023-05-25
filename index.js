@@ -9,6 +9,7 @@ const macrosRoute = require("./routes/macrosRoute");
 const recipesRoute = require("./routes/recipesRoute");
 const signupRoute = require("./routes/signupRoute");
 app.use(cors());
+app.set("trust proxy", 1);
 app.use(express.json());
 
 //USE ROUTES
