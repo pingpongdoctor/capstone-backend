@@ -2,7 +2,7 @@ module.exports = [
   {
     id: 1,
     user_id: 1,
-    macro_name: "First Macro to gain weight",
+    macro_name: "Macro to gain weight",
     tdee: 3000,
     targeted_weight: 75, //this is used to count the time to achieve the targeted weight
     activity: "moderate",
@@ -17,7 +17,7 @@ module.exports = [
   {
     id: 2,
     user_id: 1,
-    macro_name: "Second Macro to lose weight",
+    macro_name: "Macro to lose weight",
     tdee: 3000,
     targeted_weight: 75, //this is used to count the time to achieve the targeted weight
     activity: "moderate",
@@ -32,7 +32,7 @@ module.exports = [
   {
     id: 3,
     user_id: 1,
-    macro_name: "Third Macro to maintain weight",
+    macro_name: "Macro to maintain weight",
     tdee: 3000,
     targeted_weight: 90, //this is used to count the time to achieve the targeted weight
     activity: "moderate",
@@ -47,7 +47,7 @@ module.exports = [
   {
     id: 4,
     user_id: 2,
-    macro_name: "First Macro to gain weight",
+    macro_name: "Macro to gain weight",
     tdee: 3000,
     targeted_weight: 75, //this is used to count the time to achieve the targeted weight
     activity: "moderate",
@@ -62,7 +62,7 @@ module.exports = [
   {
     id: 5,
     user_id: 2,
-    macro_name: "Second Macro to lose weight",
+    macro_name: "Macro to lose weight",
     tdee: 3000,
     targeted_weight: 75, //this is used to count the time to achieve the targeted weight
     activity: "moderate",
@@ -77,7 +77,7 @@ module.exports = [
   {
     id: 6,
     user_id: 2,
-    macro_name: "First Macro to maintain weight",
+    macro_name: "Macro to maintain weight",
     tdee: 3000,
     targeted_weight: 90, //this is used to count the time to achieve the targeted weight
     activity: "moderate",
