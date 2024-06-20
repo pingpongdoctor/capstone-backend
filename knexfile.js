@@ -5,11 +5,7 @@ const { user, password, database, host } = process.env;
  * @type { Object.<string, import("knex").Knex.Config> }
  */
 module.exports = {
-  client: "mysql",
-  connection: {
-    host,
-    database,
-    user,
-    password,
-  },
+  client: "pg",
+  connection: process.env.PG_CONNECTION_STRING,
+  searchPath: ["knex", "public"],
 };
